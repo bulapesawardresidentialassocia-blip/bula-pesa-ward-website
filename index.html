@@ -1,414 +1,72 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bula Pesa Ward Residents Association</title>
-    <style>
-        /* Reset and Base Styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<div class="card">
+<h3>Institutional Discipline</h3>
+<p>Registered, governance-led, financially structured, and ready for scale.</p>
+</div>
+</div>
+</div>
+</section>
 
-        :root {
-            --primary-color: #2c5f2d;
-            --primary-light: #4c9f4c;
-            --secondary-color: #ffc107;
-            --accent-color: #e74c3c;
-            --light-color: #f9f9f9;
-            --dark-color: #333;
-            --text-color: #444;
-            --text-light: #666;
-            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            --transition: all 0.3s ease;
-        }
 
-        body {
-            font-family: 'Arial', sans-serif;
-            line-height: 1.6;
-            color: var(--text-color);
-            background-color: #fff;
-        }
+<!-- PROJECT -->
+<section id="projects" class="project">
+<div class="container">
+<h2 class="section-title">Flagship Investment Opportunity</h2>
+<div class="card">
+<h3>River Marile Flood & Sanitation Protection Program</h3>
+<p>A decade-long disaster corridor responsible for deaths, displacement, and property destruction. BPWRA is leading a multi-phase intervention to protect lives and stabilize the local environment.</p>
+<div class="progress"><div class="bar"></div></div>
+<p style="margin-top:8px">Funding Progress: Early-stage partner mobilization</p>
+</div>
+</div>
+</section>
 
-        h1, h2, h3, h4 {
-            font-family: 'Arial', sans-serif;
-            font-weight: 600;
-            line-height: 1.3;
-        }
 
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
+<!-- TRANSPARENCY -->
+<section id="transparency">
+<div class="container">
+<h2 class="section-title">Radical Transparency</h2>
+<div class="grid2">
+<div class="card">
+<h3>Financial Governance</h3>
+<p>Dual authorization, procurement controls, expenditure approvals, and public reporting ensure partner confidence.</p>
+</div>
+<div class="card">
+<h3>Structured Leadership</h3>
+<p>Clear separation between oversight, finance, and execution functions protects institutional integrity.</p>
+</div>
+</div>
+</div>
+</section>
 
-        .section {
-            padding: 80px 0;
-        }
 
-        .section-title {
-            font-size: 2.5rem;
-            text-align: center;
-            margin-bottom: 20px;
-            color: var(--primary-color);
-            position: relative;
-        }
+<!-- MAP -->
+<section>
+<div class="container">
+<h2 class="section-title">River Marile High-Risk Zone</h2>
+<iframe src="https://maps.google.com/maps?q=Isiolo&t=&z=13&ie=UTF8&iwloc=&output=embed"></iframe>
+</div>
+</section>
 
-        .section-title::after {
-            content: '';
-            position: absolute;
-            width: 80px;
-            height: 4px;
-            background-color: var(--secondary-color);
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-        }
 
-        /* Header */
-        header {
-            background-color: white;
-            box-shadow: var(--shadow);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-        }
+<!-- CTA -->
+<section id="contact" class="cta">
+<div class="container">
+<h2 style="font-size:38px">Invest Where Impact Is Immediate</h2>
+<p style="margin-top:10px">Partner with a community already executing solutions.</p>
+<a class="btn" href="#">Request Partnership Brief</a>
+</div>
+</section>
 
-        header .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 20px;
-        }
 
-        .logo-container {
-            display: flex;
-            align-items: center;
-        }
+<footer>
+<div class="container">
+<p><strong>Bula Pesa Ward Residents Association</strong></p>
+<p>Isiolo County, Kenya</p>
+<p>Registered Community Institution • Partnership Ready</p>
+</div>
+</footer>
 
-        .logo-icon {
-            background-color: var(--primary-color);
-            color: white;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 15px;
-            font-size: 1.5rem;
-        }
 
-        /* Hero Section */
-        .hero {
-            padding-top: 150px;
-            background: linear-gradient(to right, rgba(44, 95, 45, 0.9), rgba(76, 159, 76, 0.8));
-            color: white;
-        }
-
-        .hero .container {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 60px 20px;
-        }
-
-        .hero-content {
-            flex: 1;
-            padding-right: 40px;
-        }
-
-        .hero h2 {
-            font-size: 2.8rem;
-            margin-bottom: 20px;
-            color: white;
-        }
-
-        .hero-text {
-            font-size: 1.2rem;
-            margin-bottom: 30px;
-            opacity: 0.9;
-        }
-
-        .btn {
-            display: inline-block;
-            background-color: var(--primary-color);
-            color: white;
-            padding: 12px 30px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: 500;
-            border: none;
-            cursor: pointer;
-            transition: var(--transition);
-            font-size: 1rem;
-            margin-top: 20px;
-        }
-
-        .btn:hover {
-            background-color: var(--primary-light);
-            transform: translateY(-3px);
-        }
-
-        /* Other Sections */
-        .about-content, .contributions-content, .contact-content {
-            display: flex;
-            gap: 50px;
-            margin-top: 50px;
-        }
-
-        .card {
-            background-color: white;
-            padding: 25px;
-            border-radius: 10px;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-        }
-
-        .card:hover {
-            transform: translateY(-10px);
-        }
-
-        /* Footer */
-        footer {
-            background-color: var(--dark-color);
-            color: white;
-            padding: 60px 0 20px;
-        }
-
-        .footer-content {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 40px;
-            flex-wrap: wrap;
-            gap: 40px;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hero .container,
-            .about-content,
-            .contributions-content,
-            .contact-content {
-                flex-direction: column;
-            }
-            
-            .hero-content {
-                padding-right: 0;
-                margin-bottom: 50px;
-            }
-            
-            .hero h2 {
-                font-size: 2rem;
-            }
-            
-            .section-title {
-                font-size: 2rem;
-            }
-        }
-    </style>
-    <!-- Using inline Font Awesome icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-</head>
-<body>
-    <!-- Header -->
-    <header>
-        <div class="container">
-            <div class="logo-container">
-                <div class="logo-icon">
-                    <i class="fas fa-users"></i>
-                </div>
-                <div class="logo-text">
-                    <h1>Bula Pesa Ward</h1>
-                    <p class="subtitle" style="color: #666; margin-top: -5px;">Residents Association</p>
-                </div>
-            </div>
-            
-            <nav class="main-nav">
-                <ul style="display: flex; list-style: none; gap: 30px;">
-                    <li><a href="#home" style="text-decoration: none; color: #444; font-weight: 500;">Home</a></li>
-                    <li><a href="#about" style="text-decoration: none; color: #444; font-weight: 500;">About</a></li>
-                    <li><a href="#services" style="text-decoration: none; color: #444; font-weight: 500;">Services</a></li>
-                    <li><a href="#contact" style="text-decoration: none; color: #444; font-weight: 500;">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <h2>Welcome to Bula Pesa Ward Residents Association</h2>
-                <p class="hero-text">Representing the collective voice of the residents of Bula Pesa Ward in Isiolo County</p>
-                <div class="hero-contact" style="margin: 30px 0;">
-                    <p><i class="fas fa-map-marker-alt" style="margin-right: 10px; color: #ffc107;"></i> Main Office: Fakir Bridge, Isiolo County</p>
-                    <p><i class="fas fa-phone-alt" style="margin-right: 10px; color: #ffc107;"></i> Contact: 0768 297 991</p>
-                </div>
-                <a href="#contact" class="btn">Get Involved</a>
-            </div>
-            <div class="hero-image" style="flex: 1; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
-                <div style="width: 100%; height: 400px; background: linear-gradient(45deg, #4c9f4c, #2c5f2d); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2rem;">
-                    <div style="text-align: center; padding: 20px;">
-                        <i class="fas fa-users" style="font-size: 3rem; margin-bottom: 20px;"></i>
-                        <p>Community Image Placeholder</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="section">
-        <div class="container">
-            <h2 class="section-title">About Our Association</h2>
-            <div class="about-content">
-                <div class="about-text" style="flex: 1;">
-                    <p style="margin-bottom: 20px; font-size: 1.1rem;">The Bula Pesa Ward Residents Association serves as the official representative body for all residents of Bula Pesa Ward in Isiolo County. Our mission is to promote the welfare, security, and development of our community.</p>
-                    
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 40px;">
-                        <div class="card">
-                            <div style="background-color: rgba(44, 95, 45, 0.1); color: #2c5f2d; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; font-size: 1.5rem;">
-                                <i class="fas fa-bullseye"></i>
-                            </div>
-                            <h3 style="color: #2c5f2d; margin-bottom: 15px;">Our Mission</h3>
-                            <p>To unite residents, address community concerns, and promote sustainable development in Bula Pesa Ward.</p>
-                        </div>
-                        <div class="card">
-                            <div style="background-color: rgba(44, 95, 45, 0.1); color: #2c5f2d; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; font-size: 1.5rem;">
-                                <i class="fas fa-eye"></i>
-                            </div>
-                            <h3 style="color: #2c5f2d; margin-bottom: 15px;">Our Vision</h3>
-                            <p>A harmonious, developed, and prosperous Bula Pesa Ward where every resident's voice is heard and valued.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="section" style="background-color: #f8f9fa;">
-        <div class="container">
-            <h2 class="section-title">Contact Us</h2>
-            <p class="section-subtitle" style="text-align: center; color: #666; margin-bottom: 50px;">Get in touch with the Bula Pesa Ward Residents Association</p>
-            
-            <div class="contact-content">
-                <div class="contact-info" style="flex: 1; display: grid; grid-template-columns: 1fr; gap: 25px;">
-                    <div class="card">
-                        <div style="display: flex;">
-                            <div style="background-color: rgba(44, 95, 45, 0.1); color: #2c5f2d; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 20px; font-size: 1.5rem;">
-                                <i class="fas fa-map-marker-alt"></i>
-                            </div>
-                            <div>
-                                <h3 style="color: #2c5f2d; margin-bottom: 10px;">Our Location</h3>
-                                <p>Main Office at Fakir Bridge</p>
-                                <p>Bula Pesa Ward, Isiolo County</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="card">
-                        <div style="display: flex;">
-                            <div style="background-color: rgba(44, 95, 45, 0.1); color: #2c5f2d; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 20px; font-size: 1.5rem;">
-                                <i class="fas fa-phone-alt"></i>
-                            </div>
-                            <div>
-                                <h3 style="color: #2c5f2d; margin-bottom: 10px;">Phone Number</h3>
-                                <p>0768 297 991</p>
-                                <p>Office Hours: 8:00 AM - 5:00 PM</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="card">
-                        <div style="display: flex;">
-                            <div style="background-color: rgba(44, 95, 45, 0.1); color: #2c5f2d; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 20px; font-size: 1.5rem;">
-                                <i class="fas fa-calendar-alt"></i>
-                            </div>
-                            <div>
-                                <h3 style="color: #2c5f2d; margin-bottom: 10px;">Meeting Schedule</h3>
-                                <p>General Meetings: First Saturday of every month</p>
-                                <p>Time: 10:00 AM at Fakir Bridge Office</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div style="flex: 1; min-width: 300px;">
-                    <div class="logo-container" style="margin-bottom: 20px;">
-                        <div class="logo-icon">
-                            <i class="fas fa-users"></i>
-                        </div>
-                        <div class="logo-text">
-                            <h3 style="color: white;">Bula Pesa Ward</h3>
-                            <p class="subtitle" style="color: #bbb; margin-top: -5px;">Residents Association</p>
-                        </div>
-                    </div>
-                    <p style="color: #bbb; line-height: 1.7;">Representing the collective voice of the residents of Bula Pesa Ward in Isiolo County.</p>
-                </div>
-                
-                <div style="flex: 1; min-width: 200px;">
-                    <h4 style="color: white; margin-bottom: 20px; font-size: 1.3rem;">Contact Information</h4>
-                    <p style="margin-bottom: 15px; color: #bbb; display: flex; align-items: flex-start;">
-                        <i class="fas fa-map-marker-alt" style="color: #ffc107; margin-right: 10px; margin-top: 5px;"></i>
-                        Main Office: Fakir Bridge, Isiolo County
-                    </p>
-                    <p style="margin-bottom: 15px; color: #bbb; display: flex; align-items: flex-start;">
-                        <i class="fas fa-phone-alt" style="color: #ffc107; margin-right: 10px; margin-top: 5px;"></i>
-                        Phone: 0768 297 991
-                    </p>
-                </div>
-            </div>
-            
-            <div style="border-top: 1px solid #444; padding-top: 20px; text-align: center; color: #888; font-size: 0.9rem;">
-                <p>&copy; 2023 Bula Pesa Ward Residents Association. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
-
-    <script>
-        // Simple JavaScript for smooth scrolling
-        document.addEventListener('DOMContentLoaded', function() {
-            // Smooth scrolling for navigation links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    
-                    const targetId = this.getAttribute('href');
-                    if (targetId === '#') return;
-                    
-                    const targetElement = document.querySelector(targetId);
-                    if (targetElement) {
-                        window.scrollTo({
-                            top: targetElement.offsetTop - 100,
-                            behavior: 'smooth'
-                        });
-                    }
-                });
-            });
-            
-            // Simple form handling
-            const form = document.querySelector('form');
-            if (form) {
-                form.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    alert('Thank you for your message! We will contact you soon.');
-                    this.reset();
-                });
-            }
-        });
-    </script>
 </body>
 </html>
