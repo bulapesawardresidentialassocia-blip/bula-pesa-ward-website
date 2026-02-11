@@ -1,72 +1,1441 @@
 <!DOCTYPE html>
-<div class="card">
-<h3>Institutional Discipline</h3>
-<p>Registered, governance-led, financially structured, and ready for scale.</p>
-</div>
-</div>
-</div>
-</section>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bula Pesa Ward Residents Association | Building Resilient Communities</title>
+    <meta name="description" content="Official website of Bula Pesa Ward Residents Association. Serving Isiolo County through community development, disaster resilience, and sustainable partnerships.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <style>
+        /* ====== CSS RESET & VARIABLES ====== */
+        :root {
+            --primary: #1a5d1a;
+            --primary-light: #2e7d32;
+            --primary-dark: #0d3d0d;
+            --secondary: #d4af37;
+            --accent: #e63946;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --gray: #6c757d;
+            --success: #28a745;
+            --warning: #ffc107;
+            --danger: #dc3545;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.15);
+            --transition: all 0.3s ease;
+            --border-radius: 8px;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: #fff;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            line-height: 1.3;
+            margin-bottom: 1rem;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+        
+        ul {
+            list-style: none;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+            border: none;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--primary-light);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+        
+        .btn-secondary {
+            background-color: var(--secondary);
+            color: var(--dark);
+        }
+        
+        .btn-secondary:hover {
+            background-color: #e6c44a;
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 1rem;
+            color: var(--primary-dark);
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            color: var(--gray);
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto 3rem;
+        }
+        
+        .card {
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            padding: 30px;
+            transition: var(--transition);
+            height: 100%;
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .highlight {
+            color: var(--primary);
+            font-weight: 700;
+        }
+        
+        /* ====== HEADER & NAVIGATION ====== */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: white;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo-icon {
+            background-color: var(--primary);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+        
+        .logo-text h1 {
+            font-size: 1.5rem;
+            margin-bottom: 0;
+            color: var(--primary);
+        }
+        
+        .logo-text p {
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .nav-links a {
+            font-weight: 600;
+            position: relative;
+            padding: 5px 0;
+        }
+        
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--primary);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: var(--transition);
+        }
+        
+        .nav-links a:hover::after, .nav-links a.active::after {
+            width: 100%;
+        }
+        
+        .donate-btn-nav {
+            background-color: var(--accent);
+            color: white;
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-weight: 600;
+            margin-left: 20px;
+        }
+        
+        .donate-btn-nav:hover {
+            background-color: #c1121f;
+            transform: translateY(-3px);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary);
+            cursor: pointer;
+        }
+        
+        /* ====== HERO SECTION ====== */
+        .hero {
+            padding: 180px 0 100px;
+            background: linear-gradient(rgba(26, 93, 26, 0.9), rgba(26, 93, 26, 0.8)), url('https://images.unsplash.com/photo-1542744095-fcf48d80b0fd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1476&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
+        }
+        
+        .hero-btns {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            margin-top: 70px;
+            flex-wrap: wrap;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--secondary);
+            display: block;
+        }
+        
+        .stat-label {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        
+        /* ====== DONOR LOGOS SECTION ====== */
+        .donor-logos {
+            padding: 80px 0;
+            background-color: var(--light);
+        }
+        
+        .logos-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+        
+        .logo-item {
+            background: white;
+            padding: 20px 30px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100px;
+            min-width: 200px;
+        }
+        
+        .logo-placeholder {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary);
+            text-align: center;
+        }
+        
+        /* ====== PROJECTS SECTION ====== */
+        .projects {
+            padding: 100px 0;
+        }
+        
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .project-card {
+            border-top: 5px solid var(--primary);
+        }
+        
+        .project-card h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .project-meta {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px 0;
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+        
+        .progress-container {
+            margin: 25px 0;
+        }
+        
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+        
+        .progress-bar {
+            height: 10px;
+            background-color: #e9ecef;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background-color: var(--primary);
+            width: 0;
+            transition: width 1.5s ease-in-out;
+        }
+        
+        .project-status {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        
+        .status-active {
+            background-color: rgba(40, 167, 69, 0.1);
+            color: var(--success);
+        }
+        
+        .status-planning {
+            background-color: rgba(255, 193, 7, 0.1);
+            color: var(--warning);
+        }
+        
+        .status-completed {
+            background-color: rgba(13, 110, 253, 0.1);
+            color: #0d6efd;
+        }
+        
+        /* ====== RISK MAP SECTION ====== */
+        .risk-map {
+            padding: 100px 0;
+            background-color: var(--light);
+        }
+        
+        .map-container {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+        }
+        
+        .map-info {
+            flex: 1;
+        }
+        
+        .map-info h2 {
+            color: var(--primary-dark);
+            margin-bottom: 20px;
+        }
+        
+        .risk-list {
+            margin: 25px 0;
+        }
+        
+        .risk-list li {
+            margin-bottom: 15px;
+            padding-left: 30px;
+            position: relative;
+        }
+        
+        .risk-list li:before {
+            content: '⚠️';
+            position: absolute;
+            left: 0;
+        }
+        
+        .risk-high {
+            color: var(--danger);
+            font-weight: 600;
+        }
+        
+        .map-visual {
+            flex: 1;
+            height: 400px;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+        
+        #map {
+            height: 100%;
+            width: 100%;
+        }
+        
+        /* ====== DONATION SECTION ====== */
+        .donation {
+            padding: 100px 0;
+            background: linear-gradient(to right, rgba(26, 93, 26, 0.95), rgba(46, 125, 50, 0.9)), url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1611&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+        }
+        
+        .donation h2 {
+            color: white;
+            text-align: center;
+        }
+        
+        .donation-container {
+            display: flex;
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .donation-info {
+            flex: 1;
+        }
+        
+        .donation-info h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        
+        .impact-list {
+            margin: 30px 0;
+        }
+        
+        .impact-list li {
+            margin-bottom: 15px;
+            padding-left: 30px;
+            position: relative;
+        }
+        
+        .impact-list li:before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--secondary);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        .donation-form-container {
+            flex: 1;
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 40px;
+            color: var(--dark);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .donation-form h3 {
+            color: var(--primary);
+            margin-bottom: 25px;
+            text-align: center;
+        }
+        
+        .amount-options {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+        
+        .amount-option {
+            padding: 15px;
+            text-align: center;
+            border: 2px solid #dee2e6;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 600;
+        }
+        
+        .amount-option:hover, .amount-option.selected {
+            border-color: var(--primary);
+            background-color: rgba(26, 93, 26, 0.05);
+        }
+        
+        .custom-amount {
+            margin-bottom: 25px;
+        }
+        
+        .custom-amount input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #dee2e6;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #dee2e6;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            font-family: 'Open Sans', sans-serif;
+        }
+        
+        /* ====== TRANSPARENCY SECTION ====== */
+        .transparency {
+            padding: 100px 0;
+        }
+        
+        .transparency-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .transparency-card {
+            text-align: center;
+            border-top: 5px solid var(--secondary);
+        }
+        
+        .transparency-card i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .financial-overview {
+            background-color: var(--light);
+            padding: 40px;
+            border-radius: var(--border-radius);
+            margin-top: 50px;
+        }
+        
+        /* ====== FOOTER ====== */
+        footer {
+            background-color: var(--primary-dark);
+            color: white;
+            padding: 80px 0 30px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+        
+        .footer-logo h3 {
+            color: white;
+            margin-bottom: 10px;
+        }
+        
+        .footer-contact p {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .footer-links h4, .footer-social h4 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+        
+        .footer-links ul li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links a:hover {
+            color: var(--secondary);
+            padding-left: 5px;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+        
+        .social-icon:hover {
+            background-color: var(--secondary);
+            color: var(--dark);
+            transform: translateY(-5px);
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 30px;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+        
+        /* ====== RESPONSIVE DESIGN ====== */
+        @media (max-width: 992px) {
+            .map-container, .donation-container {
+                flex-direction: column;
+            }
+            
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links, .donate-btn-nav {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2.3rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero-btns {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .amount-options {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .stats {
+                gap: 30px;
+            }
+            
+            .stat-number {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-hands-helping"></i>
+                </div>
+                <div class="logo-text">
+                    <h1>Bula Pesa Ward</h1>
+                    <p>Residents Association</p>
+                </div>
+            </div>
+            
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#home" class="active">Home</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#transparency">Transparency</a></li>
+                    <li><a href="#map">Risk Zone</a></li>
+                    <li><a href="#media">Media</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            
+            <a href="#donate" class="btn donate-btn-nav">Donate Now</a>
+            
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
 
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Building Resilient Communities in Isiolo County</h1>
+                <p>Officially representing 5,200+ residents of Bula Pesa Ward. We're tackling climate resilience, water security, and sustainable development through community-led solutions.</p>
+                
+                <div class="hero-btns">
+                    <a href="#donate" class="btn btn-primary">Support Our Work</a>
+                    <a href="#projects" class="btn btn-secondary">View Projects</a>
+                </div>
+                
+                <div class="stats">
+                    <div class="stat-item">
+                        <span class="stat-number" id="projects-count">0</span>
+                        <span class="stat-label">Active Projects</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" id="residents-served">0</span>
+                        <span class="stat-label">Residents Served</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" id="project-funding">0</span>
+                        <span class="stat-label">KES in Project Funding</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" id="partnerships">0</span>
+                        <span class="stat-label">Strategic Partnerships</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<!-- PROJECT -->
-<section id="projects" class="project">
-<div class="container">
-<h2 class="section-title">Flagship Investment Opportunity</h2>
-<div class="card">
-<h3>River Marile Flood & Sanitation Protection Program</h3>
-<p>A decade-long disaster corridor responsible for deaths, displacement, and property destruction. BPWRA is leading a multi-phase intervention to protect lives and stabilize the local environment.</p>
-<div class="progress"><div class="bar"></div></div>
-<p style="margin-top:8px">Funding Progress: Early-stage partner mobilization</p>
-</div>
-</div>
-</section>
+    <!-- Donor Logos Section -->
+    <section class="donor-logos">
+        <div class="container">
+            <h2 class="section-title">Trusted by Leading Organizations</h2>
+            <p class="section-subtitle">We partner with international and local organizations to maximize community impact</p>
+            
+            <div class="logos-container">
+                <div class="logo-item">
+                    <div class="logo-placeholder">UNDP Kenya</div>
+                </div>
+                <div class="logo-item">
+                    <div class="logo-placeholder">Isiolo County Gov</div>
+                </div>
+                <div class="logo-item">
+                    <div class="logo-placeholder">Red Cross Kenya</div>
+                </div>
+                <div class="logo-item">
+                    <div class="logo-placeholder">World Vision</div>
+                </div>
+                <div class="logo-item">
+                    <div class="logo-placeholder">USAID Kenya</div>
+                </div>
+            </div>
+        </div>
+    </section>
 
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2 class="section-title">Our Impactful Projects</h2>
+            <p class="section-subtitle">Real-time tracking of community development initiatives with full financial transparency</p>
+            
+            <div class="projects-grid">
+                <div class="card project-card">
+                    <span class="project-status status-active">Active • 78% Funded</span>
+                    <h3>River Marile Flood Resilience</h3>
+                    <p>Building protective barriers and early warning systems for 1,200 at-risk households along River Marile.</p>
+                    
+                    <div class="project-meta">
+                        <span><i class="far fa-calendar"></i> Jan 2023 - Dec 2024</span>
+                        <span><i class="fas fa-money-bill-wave"></i> KES 4.2M Budget</span>
+                    </div>
+                    
+                    <div class="progress-container">
+                        <div class="progress-label">
+                            <span>Funding Progress</span>
+                            <span>78%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" data-width="78"></div>
+                        </div>
+                    </div>
+                    
+                    <a href="#" class="btn btn-outline" style="margin-top: 20px; display: inline-block;">View Project Details</a>
+                </div>
+                
+                <div class="card project-card">
+                    <span class="project-status status-active">Active • 45% Funded</span>
+                    <h3>Bula Bao Water Access</h3>
+                    <p>Installing 5 new boreholes and water kiosks to serve 800 households in Bula Bao area.</p>
+                    
+                    <div class="project-meta">
+                        <span><i class="far fa-calendar"></i> Mar 2023 - Feb 2024</span>
+                        <span><i class="fas fa-money-bill-wave"></i> KES 3.8M Budget</span>
+                    </div>
+                    
+                    <div class="progress-container">
+                        <div class="progress-label">
+                            <span>Funding Progress</span>
+                            <span>45%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" data-width="45"></div>
+                        </div>
+                    </div>
+                    
+                    <a href="#" class="btn btn-outline" style="margin-top: 20px; display: inline-block;">View Project Details</a>
+                </div>
+                
+                <div class="card project-card">
+                    <span class="project-status status-completed">Completed • 100% Funded</span>
+                    <h3>Women's Entrepreneurship Program</h3>
+                    <p>Training and seed funding for 150 women-led small businesses in Kure area.</p>
+                    
+                    <div class="project-meta">
+                        <span><i class="far fa-calendar"></i> Aug 2022 - Jul 2023</span>
+                        <span><i class="fas fa-money-bill-wave"></i> KES 2.1M Budget</span>
+                    </div>
+                    
+                    <div class="progress-container">
+                        <div class="progress-label">
+                            <span>Funding Progress</span>
+                            <span>100%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" data-width="100"></div>
+                        </div>
+                    </div>
+                    
+                    <a href="#" class="btn btn-outline" style="margin-top: 20px; display: inline-block;">View Project Report</a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<!-- TRANSPARENCY -->
-<section id="transparency">
-<div class="container">
-<h2 class="section-title">Radical Transparency</h2>
-<div class="grid2">
-<div class="card">
-<h3>Financial Governance</h3>
-<p>Dual authorization, procurement controls, expenditure approvals, and public reporting ensure partner confidence.</p>
-</div>
-<div class="card">
-<h3>Structured Leadership</h3>
-<p>Clear separation between oversight, finance, and execution functions protects institutional integrity.</p>
-</div>
-</div>
-</div>
-</section>
+    <!-- Risk Map Section -->
+    <section id="map" class="risk-map">
+        <div class="container">
+            <h2 class="section-title">River Marile Flood Risk Zone</h2>
+            <p class="section-subtitle">Critical area requiring immediate intervention to protect vulnerable communities</p>
+            
+            <div class="map-container">
+                <div class="map-info">
+                    <h2>Protecting Our Community From Climate Risks</h2>
+                    <p>The River Marile basin poses significant flood risks to over 1,200 households in Bula Pesa Ward. Our resilience project focuses on:</p>
+                    
+                    <ul class="risk-list">
+                        <li><span class="risk-high">High-risk areas</span> identified for immediate intervention</li>
+                        <li>Early warning system installation points</li>
+                        <li>Flood barrier construction zones</li>
+                        <li>Emergency evacuation routes</li>
+                        <li>Community resilience training locations</li>
+                    </ul>
+                    
+                    <p>With climate change increasing flood frequency by 40% in the last decade, our work is more urgent than ever.</p>
+                    
+                    <a href="#donate" class="btn btn-primary" style="margin-top: 30px;">Fund Flood Resilience</a>
+                </div>
+                
+                <div class="map-visual">
+                    <div id="map"></div>
+                </div>
+            </div>
+        </div>
+    </section>
 
+    <!-- Donation Section -->
+    <section id="donate" class="donation">
+        <div class="container">
+            <h2 class="section-title">Make a Direct Impact Today</h2>
+            <p class="section-subtitle">100% of donations go directly to community projects with full financial transparency</p>
+            
+            <div class="donation-container">
+                <div class="donation-info">
+                    <h3>Your Support Changes Lives</h3>
+                    <p>Every donation to Bula Pesa Ward Residents Association is carefully allocated to high-impact projects with measurable outcomes.</p>
+                    
+                    <ul class="impact-list">
+                        <li><strong>KES 5,000</strong> provides flood early warning for 10 households</li>
+                        <li><strong>KES 15,000</strong> installs a household water filtration system</li>
+                        <li><strong>KES 50,000</strong> funds a women's business startup kit</li>
+                        <li><strong>KES 150,000</strong> constructs a community water kiosk</li>
+                        <li><strong>KES 500,000</strong> builds flood protection for 50 households</li>
+                    </ul>
+                    
+                    <p>All donations are tax-deductible and receive detailed impact reports.</p>
+                </div>
+                
+                <div class="donation-form-container">
+                    <form class="donation-form" id="donationForm">
+                        <h3>Make a Secure Donation</h3>
+                        
+                        <div class="amount-options">
+                            <div class="amount-option" data-amount="500">KES 500</div>
+                            <div class="amount-option" data-amount="1000">KES 1,000</div>
+                            <div class="amount-option" data-amount="5000">KES 5,000</div>
+                            <div class="amount-option" data-amount="10000">KES 10,000</div>
+                            <div class="amount-option" data-amount="50000">KES 50,000</div>
+                            <div class="amount-option" data-amount="custom">Other</div>
+                        </div>
+                        
+                        <div class="custom-amount" style="display: none;">
+                            <input type="number" id="customAmount" placeholder="Enter amount in KES" min="100">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="donationType">Donation Type</label>
+                            <select id="donationType">
+                                <option value="general">General Support</option>
+                                <option value="flood">Flood Resilience Project</option>
+                                <option value="water">Water Access Project</option>
+                                <option value="women">Women's Empowerment</option>
+                            </select>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary" style="width: 100%; padding: 16px; font-size: 1.1rem;">
+                            <i class="fas fa-lock"></i> Donate Securely
+                        </button>
+                        
+                        <p style="text-align: center; margin-top: 15px; font-size: 0.9rem; color: var(--gray);">
+                            <i class="fas fa-shield-alt"></i> 100% Secure • Tax Deductible • Full Transparency
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<!-- MAP -->
-<section>
-<div class="container">
-<h2 class="section-title">River Marile High-Risk Zone</h2>
-<iframe src="https://maps.google.com/maps?q=Isiolo&t=&z=13&ie=UTF8&iwloc=&output=embed"></iframe>
-</div>
-</section>
+    <!-- Transparency Section -->
+    <section id="transparency" class="transparency">
+        <div class="container">
+            <h2 class="section-title">Full Financial Transparency</h2>
+            <p class="section-subtitle">We believe donors deserve complete visibility into how their contributions are used</p>
+            
+            <div class="transparency-cards">
+                <div class="card transparency-card">
+                    <i class="fas fa-file-invoice-dollar"></i>
+                    <h3>Quarterly Financial Reports</h3>
+                    <p>Detailed PDF reports of all income and expenditures published quarterly.</p>
+                    <a href="#" class="btn btn-outline" style="margin-top: 20px;">View Latest Report</a>
+                </div>
+                
+                <div class="card transparency-card">
+                    <i class="fas fa-user-check"></i>
+                    <h3>Independent Audits</h3>
+                    <p>Annual audits conducted by certified third-party accounting firms.</p>
+                    <a href="#" class="btn btn-outline" style="margin-top: 20px;">View Audit Reports</a>
+                </div>
+                
+                <div class="card transparency-card">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Real-Time Project Tracking</h3>
+                    <p>Live updates on project progress, budgets, and impact metrics.</p>
+                    <a href="#" class="btn btn-outline" style="margin-top: 20px;">Track Projects</a>
+                </div>
+            </div>
+            
+            <div class="financial-overview">
+                <h3 style="text-align: center; color: var(--primary); margin-bottom: 30px;">Financial Allocation (2023 Fiscal Year)</h3>
+                <div style="display: flex; justify-content: center; gap: 30px; flex-wrap: wrap;">
+                    <div style="text-align: center;">
+                        <div style="font-size: 2rem; color: var(--primary); font-weight: 700;">87%</div>
+                        <div>Direct Program Expenses</div>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="font-size: 2rem; color: var(--primary); font-weight: 700;">8%</div>
+                        <div>Administrative Costs</div>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="font-size: 2rem; color: var(--primary); font-weight: 700;">5%</div>
+                        <div>Fundraising</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
+    <!-- Media Section -->
+    <section id="media" class="projects" style="background-color: var(--light);">
+        <div class="container">
+            <h2 class="section-title">Media & Recognition</h2>
+            <p class="section-subtitle">Featured in leading publications and recognized for our community impact</p>
+            
+            <div class="projects-grid">
+                <div class="card">
+                    <h3>Press Coverage</h3>
+                    <p>Our work has been featured in:</p>
+                    <ul style="margin-top: 15px; padding-left: 20px;">
+                        <li style="list-style: disc; margin-bottom: 10px;">Daily Nation - "Community-led flood resilience in Isiolo"</li>
+                        <li style="list-style: disc; margin-bottom: 10px;">The Standard - "Women entrepreneurs transform Bula Pesa"</li>
+                        <li style="list-style: disc; margin-bottom: 10px;">Citizen TV - "Water access project changes lives"</li>
+                    </ul>
+                    <a href="#" class="btn btn-outline" style="margin-top: 20px; display: inline-block;">View Press Kit</a>
+                </div>
+                
+                <div class="card">
+                    <h3>Awards & Recognition</h3>
+                    <p>Proud recipients of:</p>
+                    <ul style="margin-top: 15px; padding-left: 20px;">
+                        <li style="list-style: disc; margin-bottom: 10px;">2023 Isiolo County Community Excellence Award</li>
+                        <li style="list-style: disc; margin-bottom: 10px;">UNDP Kenya Resilience Partnership Award</li>
+                        <li style="list-style: disc; margin-bottom: 10px;">Finalist, Kenya Community Development Awards</li>
+                    </ul>
+                    <a href="#" class="btn btn-outline" style="margin-top: 20px; display: inline-block;">View Awards</a>
+                </div>
+                
+                <div class="card">
+                    <h3>Grant-Ready Documentation</h3>
+                    <p>Available for potential partners:</p>
+                    <ul style="margin-top: 15px; padding-left: 20px;">
+                        <li style="list-style: disc; margin-bottom: 10px;">Detailed project proposals</li>
+                        <li style="list-style: disc; margin-bottom: 10px;">Impact assessment reports</li>
+                        <li style="list-style: disc; margin-bottom: 10px;">Organizational capacity statement</li>
+                        <li style="list-style: disc; margin-bottom: 10px;">Past performance evidence</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-outline" style="margin-top: 20px; display: inline-block;">Request Documents</a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<!-- CTA -->
-<section id="contact" class="cta">
-<div class="container">
-<h2 style="font-size:38px">Invest Where Impact Is Immediate</h2>
-<p style="margin-top:10px">Partner with a community already executing solutions.</p>
-<a class="btn" href="#">Request Partnership Brief</a>
-</div>
-</section>
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <div class="logo">
+                        <div class="logo-icon">
+                            <i class="fas fa-hands-helping"></i>
+                        </div>
+                        <div class="logo-text">
+                            <h3>Bula Pesa Ward</h3>
+                            <p>Residents Association</p>
+                        </div>
+                    </div>
+                    <p style="margin-top: 20px;">Building resilient, sustainable communities in Isiolo County through participatory development and strategic partnerships.</p>
+                </div>
+                
+                <div class="footer-contact">
+                    <h4>Contact Information</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> Main Office: Bula Bao, Kure Area, Isiolo County</p>
+                    <p><i class="fas fa-phone"></i> Contact: 0768 297 991</p>
+                    <p><i class="fas fa-envelope"></i> Email: info@bulapesa.org</p>
+                    <p><i class="fas fa-clock"></i> Office Hours: Mon-Fri, 8:00 AM - 5:00 PM</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#projects">Projects</a></li>
+                        <li><a href="#transparency">Financial Reports</a></li>
+                        <li><a href="#map">Risk Zone Map</a></li>
+                        <li><a href="#media">Media & Press</a></li>
+                        <li><a href="#donate">Donate</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-social">
+                    <h4>Connect With Us</h4>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    </div>
+                    <p style="margin-top: 20px;">Subscribe to our newsletter for updates</p>
+                    <div style="display: flex; margin-top: 10px;">
+                        <input type="email" placeholder="Your email" style="flex: 1; padding: 10px; border: none; border-radius: 4px 0 0 4px;">
+                        <button class="btn btn-secondary" style="border-radius: 0 4px 4px 0; padding: 10px 15px;">Join</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 Bula Pesa Ward Residents Association. All rights reserved.</p>
+                <p>Registered Community-Based Organization in Isiolo County | Tax ID: CBO-XXXX-XXXX</p>
+            </div>
+        </div>
+    </footer>
 
-
-<footer>
-<div class="container">
-<p><strong>Bula Pesa Ward Residents Association</strong></p>
-<p>Isiolo County, Kenya</p>
-<p>Registered Community Institution • Partnership Ready</p>
-</div>
-</footer>
-
-
+    <!-- JavaScript -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        // Initialize map
+        function initMap() {
+            // Create a map centered on Bula Pesa Ward area
+            const map = L.map('map').setView([0.3556, 37.5833], 12); // Approximate coordinates for Isiolo
+            
+            // Add OpenStreetMap tiles
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
+            
+            // Add marker for Bula Pesa Ward main office
+            const officeMarker = L.marker([0.3556, 37.5833]).addTo(map)
+                .bindPopup('<b>Bula Pesa Ward Residents Association</b><br>Main Office: Bula Bao, Kure Area');
+            
+            // Add flood risk zone polygon (simulated)
+            const floodZone = L.polygon([
+                [0.365, 37.575],
+                [0.360, 37.580],
+                [0.355, 37.585],
+                [0.350, 37.590],
+                [0.345, 37.585],
+                [0.350, 37.575]
+            ], {
+                color: 'red',
+                fillColor: '#f03',
+                fillOpacity: 0.3,
+                weight: 2
+            }).addTo(map)
+            .bindPopup('<b>River Marile Flood Risk Zone</b><br>High-risk area affecting 1,200+ households');
+            
+            // Add legend
+            const legend = L.control({position: 'bottomright'});
+            legend.onAdd = function () {
+                const div = L.DomUtil.create('div', 'info legend');
+                div.style.backgroundColor = 'white';
+                div.style.padding = '10px';
+                div.style.borderRadius = '5px';
+                div.style.boxShadow = '0 0 10px rgba(0,0,0,0.2)';
+                div.innerHTML = `
+                    <h4 style="margin: 0 0 10px 0;">Map Legend</h4>
+                    <div style="display: flex; align-items: center; margin-bottom: 5px;">
+                        <div style="width: 15px; height: 15px; background-color: red; margin-right: 10px; border-radius: 50%;"></div>
+                        <span>Flood Risk Zone</span>
+                    </div>
+                    <div style="display: flex; align-items: center;">
+                        <div style="width: 15px; height: 15px; background-color: blue; margin-right: 10px; border-radius: 50%;"></div>
+                        <span>Association Office</span>
+                    </div>
+                `;
+                return div;
+            };
+            legend.addTo(map);
+        }
+        
+        // Initialize animated counters
+        function initCounters() {
+            const counters = document.querySelectorAll('.stat-number');
+            const speed = 200;
+            
+            counters.forEach(counter => {
+                const updateCount = () => {
+                    const target = getTargetNumber(counter.id);
+                    const count = +counter.innerText;
+                    const increment = target / speed;
+                    
+                    if (count < target) {
+                        counter.innerText = Math.ceil(count + increment);
+                        setTimeout(updateCount, 10);
+                    } else {
+                        counter.innerText = target.toLocaleString();
+                    }
+                };
+                
+                updateCount();
+            });
+        }
+        
+        function getTargetNumber(id) {
+            switch(id) {
+                case 'projects-count': return 8;
+                case 'residents-served': return 5200;
+                case 'project-funding': return 12400000;
+                case 'partnerships': return 12;
+                default: return 0;
+            }
+        }
+        
+        // Initialize progress bars
+        function initProgressBars() {
+            const progressBars = document.querySelectorAll('.progress-fill');
+            progressBars.forEach(bar => {
+                const width = bar.getAttribute('data-width');
+                setTimeout(() => {
+                    bar.style.width = width + '%';
+                }, 500);
+            });
+        }
+        
+        // Donation form functionality
+        function initDonationForm() {
+            const amountOptions = document.querySelectorAll('.amount-option');
+            const customAmountDiv = document.querySelector('.custom-amount');
+            const customAmountInput = document.getElementById('customAmount');
+            let selectedAmount = 5000;
+            
+            amountOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    // Remove selected class from all options
+                    amountOptions.forEach(opt => opt.classList.remove('selected'));
+                    
+                    // Add selected class to clicked option
+                    this.classList.add('selected');
+                    
+                    // Handle custom amount
+                    if (this.getAttribute('data-amount') === 'custom') {
+                        customAmountDiv.style.display = 'block';
+                        customAmountInput.focus();
+                    } else {
+                        customAmountDiv.style.display = 'none';
+                        selectedAmount = parseInt(this.getAttribute('data-amount'));
+                    }
+                });
+            });
+            
+            // Set default selected
+            amountOptions[2].classList.add('selected');
+            
+            // Handle custom amount input
+            customAmountInput.addEventListener('input', function() {
+                selectedAmount = parseInt(this.value) || 0;
+            });
+            
+            // Form submission
+            document.getElementById('donationForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Get form values
+                const name = document.getElementById('name').value;
+                const email = document.getElementById('email').value;
+                const phone = document.getElementById('phone').value;
+                const donationType = document.getElementById('donationType').value;
+                const amount = customAmountDiv.style.display === 'block' ? 
+                    (parseInt(customAmountInput.value) || selectedAmount) : selectedAmount;
+                
+                // In a real implementation, this would connect to a payment processor
+                // For demo purposes, we'll show a confirmation message
+                const projectNames = {
+                    'general': 'General Community Fund',
+                    'flood': 'River Marile Flood Resilience Project',
+                    'water': 'Bula Bao Water Access Project',
+                    'women': "Women's Entrepreneurship Program"
+                };
+                
+                alert(`Thank you, ${name}!\n\nYour donation of KES ${amount.toLocaleString()} to the ${projectNames[donationType]} has been recorded.\n\nWe will send a confirmation email to ${email} and receipt to your phone ${phone}.\n\nThank you for supporting our community!`);
+                
+                // Reset form
+                this.reset();
+                amountOptions[2].classList.add('selected');
+                customAmountDiv.style.display = 'none';
+            });
+        }
+        
+        // Mobile menu toggle
+        function initMobileMenu() {
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const navLinks = document.querySelector('.nav-links');
+            const donateBtn = document.querySelector('.donate-btn-nav');
+            
+            mobileMenuBtn.addEventListener('click', function() {
+                navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+                donateBtn.style.display = donateBtn.style.display === 'block' ? 'none' : 'block';
+                
+                if (navLinks.style.display === 'flex') {
+                    navLinks.style.flexDirection = 'column';
+                    navLinks.style.position = 'absolute';
+                    navLinks.style.top = '100%';
+                    navLinks.style.left = '0';
+                    navLinks.style.width = '100%';
+                    navLinks.style.backgroundColor = 'white';
+                    navLinks.style.padding = '20px';
+                    navLinks.style.boxShadow = '0 10px 20px rgba(0,0,0,0.1)';
+                    navLinks.style.gap = '20px';
+                    
+                    donateBtn.style.position = 'absolute';
+                    donateBtn.style.top = 'calc(100% + 180px)';
+                    donateBtn.style.left = '20px';
+                    donateBtn.style.right = '20px';
+                    donateBtn.style.textAlign = 'center';
+                }
+            });
+            
+            // Close mobile menu when clicking a link
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', function() {
+                    if (window.innerWidth <= 768) {
+                        navLinks.style.display = 'none';
+                        donateBtn.style.display = 'none';
+                    }
+                });
+            });
+        }
+        
+        // Smooth scrolling for anchor links
+        function initSmoothScrolling() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 100,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        }
+        
+        // Initialize everything when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            initMap();
+            initCounters();
+            initProgressBars();
+            initDonationForm();
+            initMobileMenu();
+            initSmoothScrolling();
+            
+            // Animate elements on scroll
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animated');
+                    }
+                });
+            }, observerOptions);
+            
+            // Observe cards for animation
+            document.querySelectorAll('.card').forEach(card => {
+                observer.observe(card);
+            });
+        });
+    </script>
 </body>
 </html>
+
+
+
