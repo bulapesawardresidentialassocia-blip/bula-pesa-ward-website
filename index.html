@@ -1,720 +1,249 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bula Pesa Ward Residents Association</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
-        :root {
-            --primary-color: #2c5f2d;
-            --secondary-color: #97bc62;
-            --accent-color: #f0c808;
-            --light-color: #f5f7f3;
-            --dark-color: #1a3c1e;
-        }
-        
-        body {
-            background-color: var(--light-color);
-            color: #333;
-            line-height: 1.6;
-        }
-        
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        /* Header Styles */
-        header {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 1rem 0;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-        
-        .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-        
-        .logo-icon {
-            background-color: var(--secondary-color);
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-        }
-        
-        .logo-text h1 {
-            font-size: 1.8rem;
-            margin-bottom: 5px;
-        }
-        
-        .logo-text p {
-            font-size: 0.9rem;
-            opacity: 0.9;
-        }
-        
-        nav ul {
-            display: flex;
-            list-style: none;
-        }
-        
-        nav ul li {
-            margin-left: 25px;
-        }
-        
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.1rem;
-            transition: color 0.3s;
-        }
-        
-        nav ul li a:hover {
-            color: var(--accent-color);
-        }
-        
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-        
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(rgba(44, 95, 45, 0.85), rgba(44, 95, 45, 0.9)), url('https://images.unsplash.com/photo-1516156008625-3a9d6067fab5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
-            background-size: cover;
-            background-position: center;
-            color: white;
-            padding: 6rem 0;
-            text-align: center;
-        }
-        
-        .hero h2 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-        
-        .hero p {
-            font-size: 1.3rem;
-            max-width: 800px;
-            margin: 0 auto 2rem;
-        }
-        
-        .btn {
-            display: inline-block;
-            background-color: var(--accent-color);
-            color: var(--dark-color);
-            padding: 12px 30px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1.1rem;
-            transition: all 0.3s;
-            border: none;
-            cursor: pointer;
-        }
-        
-        .btn:hover {
-            background-color: #e0b507;
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-        
-        /* Main Content */
-        .section-title {
-            text-align: center;
-            margin-bottom: 3rem;
-            color: var(--primary-color);
-            position: relative;
-            padding-bottom: 15px;
-        }
-        
-        .section-title:after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background-color: var(--secondary-color);
-        }
-        
-        section {
-            padding: 5rem 0;
-        }
-        
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-        
-        .about-text h3 {
-            color: var(--primary-color);
-            margin-bottom: 1.5rem;
-            font-size: 1.8rem;
-        }
-        
-        .about-text p {
-            margin-bottom: 1.5rem;
-        }
-        
-        .about-image {
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        }
-        
-        .about-image img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-        
-        /* Contact Section */
-        .contact-section {
-            background-color: #f9fbf7;
-        }
-        
-        .contact-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-        }
-        
-        .contact-info {
-            background-color: white;
-            padding: 2.5rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-        }
-        
-        .contact-info h3 {
-            color: var(--primary-color);
-            margin-bottom: 1.5rem;
-            font-size: 1.8rem;
-        }
-        
-        .contact-item {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 1.5rem;
-        }
-        
-        .contact-icon {
-            background-color: var(--light-color);
-            color: var(--primary-color);
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 15px;
-            flex-shrink: 0;
-        }
-        
-        .contact-details h4 {
-            margin-bottom: 5px;
-            color: var(--dark-color);
-        }
-        
-        .map-placeholder {
-            background-color: #e9ece5;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 300px;
-            color: var(--primary-color);
-            font-weight: bold;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-        }
-        
-        /* Services Section */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-        
-        .service-card {
-            background-color: white;
-            border-radius: 10px;
-            padding: 2rem;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s;
-        }
-        
-        .service-card:hover {
-            transform: translateY(-10px);
-        }
-        
-        .service-icon {
-            background-color: var(--light-color);
-            color: var(--primary-color);
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 1.5rem;
-            font-size: 1.8rem;
-        }
-        
-        .service-card h3 {
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-        }
-        
-        /* Footer */
-        footer {
-            background-color: var(--dark-color);
-            color: white;
-            padding: 4rem 0 2rem;
-        }
-        
-        .footer-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 3rem;
-            margin-bottom: 3rem;
-        }
-        
-        .footer-logo .logo-icon {
-            background-color: var(--secondary-color);
-            margin-bottom: 1.5rem;
-        }
-        
-        .footer-logo h3 {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-        }
-        
-        .footer-links h4, .footer-contact h4 {
-            margin-bottom: 1.5rem;
-            font-size: 1.3rem;
-            position: relative;
-            padding-bottom: 10px;
-        }
-        
-        .footer-links h4:after, .footer-contact h4:after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 50px;
-            height: 3px;
-            background-color: var(--secondary-color);
-        }
-        
-        .footer-links ul {
-            list-style: none;
-        }
-        
-        .footer-links ul li {
-            margin-bottom: 10px;
-        }
-        
-        .footer-links ul li a {
-            color: #ccc;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        
-        .footer-links ul li a:hover {
-            color: var(--accent-color);
-        }
-        
-        .footer-contact p {
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-        }
-        
-        .footer-contact i {
-            margin-right: 10px;
-            color: var(--secondary-color);
-        }
-        
-        .copyright {
-            text-align: center;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: #aaa;
-            font-size: 0.9rem;
-        }
-        
-        /* Responsive Design */
-        @media (max-width: 992px) {
-            .about-content, .contact-container {
-                grid-template-columns: 1fr;
-                gap: 3rem;
-            }
-            
-            .hero h2 {
-                font-size: 2.5rem;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .header-container {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            .logo {
-                margin-bottom: 15px;
-            }
-            
-            nav ul {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            nav ul li {
-                margin: 10px 0;
-            }
-            
-            .mobile-menu-btn {
-                display: block;
-                position: absolute;
-                top: 20px;
-                right: 20px;
-            }
-            
-            .mobile-menu {
-                display: none;
-            }
-            
-            .mobile-menu.active {
-                display: block;
-                width: 100%;
-            }
-            
-            .hero {
-                padding: 4rem 0;
-            }
-            
-            .hero h2 {
-                font-size: 2rem;
-            }
-            
-            section {
-                padding: 3rem 0;
-            }
-        }
-        
-        @media (max-width: 576px) {
-            .container {
-                width: 95%;
-            }
-            
-            .hero h2 {
-                font-size: 1.8rem;
-            }
-            
-            .hero p {
-                font-size: 1.1rem;
-            }
-            
-            .btn {
-                padding: 10px 20px;
-                font-size: 1rem;
-            }
-            
-            .service-card, .contact-info {
-                padding: 1.5rem;
-            }
-        }
-    </style>
-</head>
-<body>
-    <!-- Header -->
-    <header>
-        <div class="container header-container">
-            <div class="logo">
-                <div class="logo-icon">
-                    <i class="fas fa-users"></i>
-                </div>
-                <div class="logo-text">
-                    <h1>Bula Pesa Ward Residents Association</h1>
-                    <p>Isiolo County, Kenya</p>
-                </div>
-            </div>
-            
-            <button class="mobile-menu-btn" id="mobileMenuBtn">
-                <i class="fas fa-bars"></i>
-            </button>
-            
-            <nav class="mobile-menu" id="mainNav">
-                <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About Us</a></li>
-                    <li><a href="#services">Our Services</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+import React from "react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { motion } from "framer-motion";
+import { BarChart3, ShieldCheck, Globe, Droplets, Newspaper, Handshake, MapPin, TrendingUp, Users } from "lucide-react";
 
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="container">
-            <h2>Building a Stronger Community Together</h2>
-            <p>The Bula Pesa Ward Residents Association represents the collective voice of residents in Bula Pesa Ward, Isiolo County. We work to improve living conditions, advocate for community needs, and foster unity among residents.</p>
-            <a href="#contact" class="btn">Get in Touch</a>
-        </div>
-    </section>
+export default function EliteBPWRAWebsite() {
+  return (
+    <div className="min-h-screen bg-white text-gray-800">
 
-    <!-- About Section -->
-    <section id="about">
-        <div class="container">
-            <h2 class="section-title">About Our Association</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <h3>Our Mission & Vision</h3>
-                    <p>The Bula Pesa Ward Residents Association serves as the unified voice for all residents in our ward. Our mission is to improve the quality of life, advocate for community needs, and promote sustainable development in our area.</p>
-                    <p>Established to address the common concerns of residents, we collaborate with local authorities, organize community initiatives, and work towards creating a safe, clean, and prosperous neighborhood for all.</p>
-                    <p>We believe in the power of community collaboration and actively engage residents in decision-making processes that affect our ward's development and wellbeing.</p>
-                </div>
-                <div class="about-image">
-                    <!-- In a real implementation, replace with actual association image -->
-                    <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Community meeting at Bula Pesa Ward">
-                </div>
-            </div>
-        </div>
-    </section>
+      {/* HERO — DONOR CONVERSION OPTIMIZED */}
+      <section className="relative bg-gradient-to-br from-blue-800 via-blue-700 to-cyan-600 text-white p-12 md:p-24 overflow-hidden">
+        <motion.div initial={{opacity:0,y:30}} animate={{opacity:1,y:0}} transition={{duration:0.6}} className="max-w-5xl">
+          <h1 className="text-5xl md:text-7xl font-bold leading-tight">
+            Community-Led Climate Resilience in Northern Kenya
+          </h1>
 
-    <!-- Services Section -->
-    <section id="services" style="background-color: #f9fbf7;">
-        <div class="container">
-            <h2 class="section-title">Our Services & Activities</h2>
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-handshake"></i>
-                    </div>
-                    <h3>Community Advocacy</h3>
-                    <p>We represent residents' interests before local government and other stakeholders, advocating for better services, infrastructure, and policies that benefit our community.</p>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-tools"></i>
-                    </div>
-                    <h3>Development Projects</h3>
-                    <p>We initiate and coordinate community development projects, including sanitation improvements, road maintenance, and public space enhancements.</p>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-balance-scale"></i>
-                    </div>
-                    <h3>Conflict Resolution</h3>
-                    <p>Our association provides mediation services to help resolve disputes among residents amicably, promoting harmony within the community.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+          <p className="mt-6 text-xl md:text-2xl max-w-3xl text-blue-100">
+            Bula Pesa Ward Residents Association is transforming a high-risk flood corridor into a model of
+            locally-driven infrastructure, public health protection, and climate adaptation.
+          </p>
 
-    <!-- Contact Section -->
-    <section class="contact-section" id="contact">
-        <div class="container">
-            <h2 class="section-title">Contact Us</h2>
-            <div class="contact-container">
-                <div class="contact-info">
-                    <h3>Get In Touch</h3>
-                    <p>Reach out to us for any inquiries, suggestions, or to report issues in our ward. We're here to serve the community.</p>
-                    
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h4>Main Office Location</h4>
-                            <p>Fakir Bridge, Bula Pesa Ward<br>Isiolo County, Kenya</p>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-phone"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h4>Phone Number</h4>
-                            <p>0768 297 991</p>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-clock"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h4>Office Hours</h4>
-                            <p>Monday - Friday: 8:00 AM - 5:00 PM<br>Saturday: 9:00 AM - 1:00 PM</p>
-                        </div>
-                    </div>
-                    
-                    <a href="tel:0768297991" class="btn" style="margin-top: 20px; width: 100%; text-align: center;">
-                        <i class="fas fa-phone-alt"></i> Call Us Now
-                    </a>
-                </div>
-                
-                <div>
-                    <h3 style="color: var(--primary-color); margin-bottom: 1.5rem;">Our Location</h3>
-                    <div class="map-placeholder">
-                        <div style="text-align: center; padding: 20px;">
-                            <i class="fas fa-map-marked-alt" style="font-size: 3rem; margin-bottom: 15px;"></i>
-                            <p>Fakir Bridge, Bula Pesa Ward</p>
-                            <p>Isiolo County, Kenya</p>
-                        </div>
-                    </div>
-                    <p style="margin-top: 15px; font-style: italic; text-align: center;">Our office is located near Fakir Bridge, serving as the central hub for community activities and association meetings.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+          <div className="mt-10 flex flex-wrap gap-4">
+            <Button size="lg" className="bg-white text-blue-800 font-semibold">
+              Fund a Life-Saving Project
+            </Button>
+            <Button size="lg" variant="outline" className="border-white text-white">
+              Become a Strategic Partner
+            </Button>
+          </div>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-container">
-                <div class="footer-logo">
-                    <div class="logo-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <h3>Bula Pesa Ward Residents Association</h3>
-                    <p>Representing the collective voice of residents in Bula Pesa Ward, Isiolo County.</p>
-                </div>
-                
-                <div class="footer-links">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#about">About Us</a></li>
-                        <li><a href="#services">Our Services</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-contact">
-                    <h4>Contact Info</h4>
-                    <p><i class="fas fa-map-marker-alt"></i> Fakir Bridge, Bula Pesa Ward</p>
-                    <p><i class="fas fa-phone"></i> 0768 297 991</p>
-                    <p><i class="fas fa-clock"></i> Mon-Fri: 8AM-5PM, Sat: 9AM-1PM</p>
-                </div>
-            </div>
-            
-            <div class="copyright">
-                <p>&copy; 2026 Bula Pesa Ward Residents Association. All rights reserved. | Isiolo County, Kenya</p>
-            </div>
-        </div>
-    </footer>
+          <div className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-6">
+            {[
+              ["30+","Lives Lost to Flooding"],
+              ["2KM","High-Risk River Stretch"],
+              ["$0 External","Projects Self-Funded"],
+              ["Top Priority","County Risk Zone"]
+            ].map((stat,i)=> (
+              <div key={i}>
+                <h2 className="text-3xl font-bold">{stat[0]}</h2>
+                <p className="text-blue-100">{stat[1]}</p>
+              </div>
+            ))}
+          </div>
+        </motion.div>
+      </section>
 
-    <script>
-        // Mobile menu toggle
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const mainNav = document.getElementById('mainNav');
-        
-        mobileMenuBtn.addEventListener('click', function() {
-            mainNav.classList.toggle('active');
-            
-            // Change icon based on menu state
-            const icon = mobileMenuBtn.querySelector('i');
-            if (mainNav.classList.contains('active')) {
-                icon.classList.remove('fa-bars');
-                icon.classList.add('fa-times');
-            } else {
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
+
+      {/* WHY FUND US — MAJOR DONOR TRIGGER */}
+      <section className="p-14 md:p-20 bg-gray-50">
+        <h2 className="text-4xl font-bold text-center mb-12">
+          Why Fund BPWRA Instead of Anyone Else?
+        </h2>
+
+        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          {[
+            {
+              icon:<TrendingUp/>,
+              title:"Execution Before Funding",
+              text:"We built bridges, protected cemeteries, and mobilized residents before receiving external support — dramatically lowering donor risk."
+            },
+            {
+              icon:<Users/>,
+              title:"Deep Community Trust",
+              text:"Our legitimacy comes directly from residents. Projects are protected, maintained, and socially enforced."
+            },
+            {
+              icon:<ShieldCheck/>,
+              title:"Low Institutional Risk",
+              text:"Registered, governance-led, financially structured, and partnership-ready."
             }
-        });
-        
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    // Close mobile menu if open
-                    if (mainNav.classList.contains('active')) {
-                        mainNav.classList.remove('active');
-                        const icon = mobileMenuBtn.querySelector('i');
-                        icon.classList.remove('fa-times');
-                        icon.classList.add('fa-bars');
-                    }
-                    
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-        
-        // Highlight current section in navigation
-        window.addEventListener('scroll', function() {
-            const sections = document.querySelectorAll('section');
-            const navLinks = document.querySelectorAll('nav a');
-            
-            let currentSection = '';
-            
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                if (scrollY >= (sectionTop - 150)) {
-                    currentSection = section.getAttribute('id');
-                }
-            });
-            
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === `#${currentSection}`) {
-                    link.classList.add('active');
-                }
-            });
-        });
-    </script>
-</body>
-</html>
+          ].map((item,i)=>(
+            <Card key={i} className="rounded-2xl shadow-lg">
+              <CardContent className="p-8">
+                <div className="mb-4">{item.icon}</div>
+                <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
+                <p className="text-gray-600">{item.text}</p>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </section>
+
+
+      {/* LIVE FUNDING METERS */}
+      <section className="p-14 md:p-20">
+        <h2 className="text-4xl font-bold text-center mb-12">
+          Priority Projects Seeking Funding
+        </h2>
+
+        <div className="grid md:grid-cols-2 gap-10 max-w-6xl mx-auto">
+          {[{
+            title:"River Marile Flood & Sanitation Protection",
+            raised:"$18,000",
+            goal:"$120,000",
+            width:"15%"
+          },{
+            title:"Emergency Climate Drainage Channels",
+            raised:"$6,500",
+            goal:"$45,000",
+            width:"14%"
+          }].map((p,i)=> (
+            <Card key={i} className="rounded-2xl shadow-xl">
+              <CardContent className="p-8">
+                <h3 className="text-2xl font-semibold mb-4">{p.title}</h3>
+
+                <div className="w-full bg-gray-200 rounded-full h-4 mb-3">
+                  <div className="bg-cyan-600 h-4 rounded-full" style={{width:p.width}} />
+                </div>
+
+                <p className="text-gray-600">
+                  Raised {p.raised} of {p.goal}
+                </p>
+
+                <Button className="mt-6">Fund This Project</Button>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </section>
+
+
+      {/* DONOR LOGOS */}
+      <section className="p-14 bg-white border-y">
+        <h2 className="text-3xl font-bold text-center mb-10">
+          Trusted by Communities — Ready for Institutional Partners
+        </h2>
+
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-6 max-w-5xl mx-auto opacity-70">
+          {["World Bank","Water Sector Trust Fund","UNDP","USAID","Safaricom Foundation"].map((d,i)=> (
+            <div key={i} className="border rounded-xl p-4 text-center font-semibold">
+              {d}
+            </div>
+          ))}
+        </div>
+      </section>
+
+
+      {/* PROJECT TRACKER */}
+      <section className="p-14 md:p-20 bg-gray-50">
+        <h2 className="text-4xl font-bold text-center mb-12">
+          Institutional Project Tracker
+        </h2>
+
+        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          {[
+            ["River Marile Climate Project","Funding Stage",<Droplets/>],
+            ["Community Bridge","Operational",<Globe/>],
+            ["Cemetery Protection","Completed",<ShieldCheck/>]
+          ].map((p,i)=> (
+            <Card key={i} className="rounded-2xl shadow-md">
+              <CardContent className="p-8">
+                <div className="mb-3">{p[2]}</div>
+                <h3 className="text-xl font-semibold">{p[0]}</h3>
+                <p className="text-cyan-700 font-medium mt-2">{p[1]}</p>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </section>
+
+
+      {/* TRANSPARENCY */}
+      <section className="p-14 md:p-20">
+        <h2 className="text-4xl font-bold text-center mb-12">
+          Radical Transparency
+        </h2>
+
+        <div className="grid md:grid-cols-2 gap-10 max-w-6xl mx-auto">
+          <Card className="rounded-2xl shadow">
+            <CardContent className="p-8">
+              <BarChart3 className="mb-4"/>
+              <h3 className="text-xl font-semibold mb-2">Financial Controls</h3>
+              <p className="text-gray-600">
+                Dual-signatory accounts, procurement rules, expenditure approvals, and annual public reporting.
+              </p>
+            </CardContent>
+          </Card>
+
+          <Card className="rounded-2xl shadow">
+            <CardContent className="p-8">
+              <Handshake className="mb-4"/>
+              <h3 className="text-xl font-semibold mb-2">Governance</h3>
+              <p className="text-gray-600">
+                Structured leadership with separation of finance, oversight, and execution functions.
+              </p>
+            </CardContent>
+          </Card>
+        </div>
+      </section>
+
+
+      {/* MAP */}
+      <section className="p-14 bg-gray-50">
+        <h2 className="text-4xl font-bold text-center mb-10">
+          River Marile High-Risk Zone
+        </h2>
+
+        <Card className="rounded-2xl overflow-hidden max-w-6xl mx-auto">
+          <CardContent className="p-0">
+            <iframe
+              title="River Marile Map"
+              src="https://maps.google.com/maps?q=Isiolo&t=&z=13&ie=UTF8&iwloc=&output=embed"
+              className="w-full h-[450px] border-0"
+            />
+          </CardContent>
+        </Card>
+      </section>
+
+
+      {/* FOUNDER MESSAGE */}
+      <section className="p-14 md:p-20 text-center">
+        <h2 className="text-4xl font-bold mb-6">Message from the Chairman</h2>
+
+        <p className="max-w-4xl mx-auto text-lg text-gray-700">
+          "We refused to wait for tragedy before acting. When floods threatened lives, we organized.
+          When infrastructure failed, we built. BPWRA represents a new governance model — one where
+          communities are not passive recipients of development, but architects of their future."
+        </p>
+      </section>
+
+
+      {/* DONATE */}
+      <section className="p-16 bg-gradient-to-r from-cyan-600 to-blue-700 text-white text-center">
+        <h2 className="text-4xl font-bold mb-4">Invest Where Impact Is Guaranteed</h2>
+        <p className="max-w-2xl mx-auto mb-8 text-blue-100">
+          Every contribution directly protects lives, strengthens infrastructure, and builds climate resilience.
+        </p>
+
+        <div className="flex justify-center gap-4 flex-wrap">
+          <Button size="lg" className="bg-white text-blue-800">Donate via M-Pesa</Button>
+          <Button size="lg" variant="outline" className="border-white">Fund a Major Project</Button>
+        </div>
+      </section>
+
+
+      {/* FOOTER */}
+      <footer className="bg-gray-900 text-gray-300 p-10 text-center">
+        <p className="font-semibold">Bula Pesa Ward Residents Association</p>
+        <p className="text-sm mt-2">Isiolo County, Kenya</p>
+        <p className="text-sm mt-1">Registered Community Institution • Partnership Ready</p>
+      </footer>
+
+    </div>
+  );
+}
 
 
 
